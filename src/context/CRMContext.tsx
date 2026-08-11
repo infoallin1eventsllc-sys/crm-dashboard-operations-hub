@@ -426,19 +426,15 @@ export const CRMProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           // who deletes every record in a collection would see the fake demo
           // records silently re-created on the very next snapshot, since every
           // subsequent empty snapshot would look identical to a fresh database.
-          const alreadyInitialized = seededCollectionsRef.current.has(colName);
           seededCollectionsRef.current.add(colName);
 
-          if (snapshot.empty && !alreadyInitialized && colName !== "activityLogs" && colName !== "gmailMessages" && colName !== "meetEvents" && colName !== "quickNotes" && colName !== "financialTransactions") {
-            // If completely empty on first load, trigger seeding
-            seedDefaultData();
-          } else {
-            const data = snapshot.docs.map(doc => ({
-              id: doc.id,
-              ...doc.data()
-            }));
-            setter(data);
-          }
+          // Auto-seeding demo data is disabled for production/client use.
+          // An empty collection is just an empty collection now.
+          const data = snapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data()
+          }));
+          setter(data);
         }, (err) => {
           console.error(`Firebase snapshot error for ${colName}:`, err);
           // Flag fallback to localStorage
