@@ -1,0 +1,6 @@
+{
+  "name": "CRM Dashboard & Operations Hub",
+  "description": "A comprehensive CRM with leads, contacts, projects, tutorial logs, Gmail integration, Google Meets scheduling, invoice management, privacy mode, a to-do board, and subscription expense tracking.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

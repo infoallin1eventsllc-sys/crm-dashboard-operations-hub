@@ -1,0 +1,153 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Global safety net catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function isStringOfSize(val, max) {
+      return val is string && val.size() <= max;
+    }
+
+    function isNum(val) {
+      return val is number;
+    }
+
+    function isBool(val) {
+      return val is bool;
+    }
+
+    // Owner allowlist. This app has a single admin account created directly in
+    // the Firebase Console (Authentication -> Users -> Add user) - there is no
+    // self-serve sign-up flow in the client. Add more addresses here only if
+    // more people should legitimately have full read/write access to this
+    // business's leads, contacts, invoices, etc.
+    function isOwner() {
+      return request.auth != null &&
+        request.auth.token.email in [
+          'infoallin1eventsllc@gmail.com'
+        ];
+    }
+
+    // 1. Leads
+    match /leads/{leadId} {
+      allow read: if isOwner();
+      allow create, update: if isOwner() &&
+        isStringOfSize(incoming().name, 100) &&
+        isStringOfSize(incoming().email, 100) &&
+        isStringOfSize(incoming().status, 50);
+      allow delete: if isOwner();
+    }
+
+    // 2. Contacts
+    match /contacts/{contactId} {
+      allow read: if isOwner();
+      allow create, update: if isOwner() &&
+        isStringOfSize(incoming().name, 100) &&
+        isStringOfSize(incoming().email, 100);
+      allow delete: if isOwner();
+    }
+
+    // 3. Projects
+    match /projects/{projectId} {
+      allow read: if isOwner();
+      allow create, update: if isOwner() &&
+        isStringOfSize(incoming().name, 150) &&
+        isStringOfSize(incoming().status, 50);
+      allow delete: if isOwner();
+    }
+
+    // 4. Tutorials
+    match /tutorials/{tutorialId} {
+      allow read: if isOwner();
+      allow create, update: if isOwner() &&
+        isStringOfSize(incoming().title, 200) &&
+        isStringOfSize(incoming().status, 50);
+      allow delete: if isOwner();
+    }
+
+    // 5. Invoices
+    match /invoices/{invoiceId} {
+      allow read: if isOwner();
+      allow create, update: if isOwner() &&
+        isStringOfSize(incoming().invoiceNumber, 50) &&
+        isStringOfSize(incoming().contactName, 100) &&
+        isNum(incoming().amount) &&
+        isStringOfSize(incoming().status, 50);
+      allow delete: if isOwner();
+    }
+
+    // 6. Subscriptions
+    match /subscriptions/{subscriptionId} {
+      allow read: if isOwner();
+      allow create, update: if isOwner() &&
+        isStringOfSize(incoming().name, 100) &&
+        isNum(incoming().cost) &&
+        isStringOfSize(incoming().billingCycle, 50) &&
+        isStringOfSize(incoming().status, 50);
+      allow delete: if isOwner();
+    }
+
+    // 7. TodoTasks
+    match /todoTasks/{todoTaskId} {
+      allow read: if isOwner();
+      allow create, update: if isOwner() &&
+        isStringOfSize(incoming().title, 150) &&
+        isStringOfSize(incoming().status, 50);
+      allow delete: if isOwner();
+    }
+
+    // 8. ActivityLogs
+    match /activityLogs/{logId} {
+      allow read: if isOwner();
+      allow create, update: if isOwner() &&
+        isStringOfSize(incoming().type, 50) &&
+        isStringOfSize(incoming().description, 500);
+      allow delete: if isOwner();
+    }
+
+    // 9. GmailMessages
+    match /gmailMessages/{msgId} {
+      allow read: if isOwner();
+      allow create, update: if isOwner() &&
+        isStringOfSize(incoming().from, 150) &&
+        isStringOfSize(incoming().subject, 200);
+      allow delete: if isOwner();
+    }
+
+    // 10. MeetEvents
+    match /meetEvents/{eventId} {
+      allow read: if isOwner();
+      allow create, update: if isOwner() &&
+        isStringOfSize(incoming().title, 150) &&
+        isStringOfSize(incoming().contactName, 100);
+      allow delete: if isOwner();
+    }
+
+    // 11. QuickNotes
+    match /quickNotes/{noteId} {
+      allow read: if isOwner();
+      allow create, update: if isOwner() &&
+        isStringOfSize(incoming().title, 150) &&
+        isStringOfSize(incoming().category, 50);
+      allow delete: if isOwner();
+    }
+
+    // 12. FinancialTransactions
+    match /financialTransactions/{transactionId} {
+      allow read: if isOwner();
+      allow create, update: if isOwner() &&
+        isStringOfSize(incoming().type, 20) &&
+        isStringOfSize(incoming().category, 100) &&
+        isNum(incoming().amount);
+      allow delete: if isOwner();
+    }
+  }
+}

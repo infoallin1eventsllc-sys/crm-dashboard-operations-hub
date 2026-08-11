@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Base Body Styling - Elegant Mint/Teal Canvas Backdrop */
+body {
+  background-color: #EDF7F4 !important;
+  color: #112F24 !important;
+  font-family: var(--font-sans);
+  background-image: radial-gradient(at 0% 0%, #E2FAF0 0px, transparent 50%),
+                    radial-gradient(at 100% 100%, #D4F5E6 0px, transparent 50%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #EDF7F4;
+}
+::-webkit-scrollbar-thumb {
+  background: #B3E2D0;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00AC76;
+}
+
+/* Typography Enhancements */
+h1, h2, h3, h4, h5, h6 {
+  color: #112F24 !important;
+  font-family: var(--font-sans) !important;
+  letter-spacing: -0.02em;
+  font-style: normal !important;
+}
+
+/* Reset any rigid publication style headers */
+h2, .text-xl.font-bold, .text-2xl.font-bold, .text-3xl.font-bold {
+  font-family: var(--font-sans) !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+}
+
+h3, h4, .font-bold.text-slate-800 {
+  font-family: var(--font-sans) !important;
+  font-style: normal !important;
+}
+
+/* Text Colors */
+.text-slate-800, .text-slate-900 {
+  color: #112F24 !important;
+}
+.text-slate-700 {
+  color: #2D4F43 !important;
+}
+.text-slate-400, .text-slate-500, .text-slate-600 {
+  color: #6C8E82 !important;
+}
+
+/* Cards Overrides - Styled like the clean rounded bento cells in Managency */
+.bg-white, .dark\:bg-slate-900, [class*="bg-white"], .bg-slate-50\/50 {
+  background-color: #ffffff !important;
+  border: 1px solid #E2F0EA !important;
+  border-radius: 20px !important;
+  box-shadow: 0 4px 20px rgba(0, 172, 118, 0.02) !important;
+}
+
+/* Remove vintage overrides */
+.shadow-sm {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
+}
+.shadow-md {
+  box-shadow: 0 4px 12px rgba(0, 172, 118, 0.03) !important;
+}
+.shadow-lg {
+  box-shadow: 0 10px 25px -5px rgba(0, 172, 118, 0.05) !important;
+}
+
+/* Borders */
+.border, .border-slate-100, .border-slate-200, .border-slate-300, .border-slate-800, .border-slate-200\/60, .divide-slate-100 {
+  border-color: #E2F0EA !important;
+  border-width: 1px !important;
+}
+
+/* Form Controls - Soft Rounded & Elegant */
+input[type="text"], input[type="email"], input[type="number"], input[type="date"], input[type="time"], textarea, select {
+  background-color: #F8FAF9 !important;
+  border: 1px solid #E2F0EA !important;
+  color: #112F24 !important;
+  border-radius: 12px !important;
+  font-family: var(--font-sans) !important;
+  font-size: 13px !important;
+  padding: 10px 14px !important;
+  box-shadow: none !important;
+  transition: all 0.2s ease-in-out;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="date"]:focus, input[type="time"]:focus, textarea:focus, select:focus {
+  outline: none !important;
+  border-color: #00AC76 !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(0, 172, 118, 0.1) !important;
+}
+
+/* Primary Button Styling - Modern Vibrant Emerald */
+button.bg-blue-600, button.bg-purple-600, button.bg-emerald-600, .bg-blue-600, .bg-purple-600, .bg-emerald-600, button.bg-amber-500 {
+  background-color: #00AC76 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 12px !important;
+  font-family: var(--font-sans) !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  letter-spacing: normal !important;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 172, 118, 0.2) !important;
+}
+
+button.bg-blue-600:hover, button.bg-purple-600:hover, button.bg-emerald-600:hover, .bg-blue-600:hover, .bg-purple-600:hover, .bg-emerald-600:hover, button.bg-amber-500:hover {
+  background-color: #009163 !important;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 172, 118, 0.3) !important;
+}
+
+/* Secondary Buttons / Outlined Controls */
+button.border-slate-200, .border-slate-200 {
+  background-color: #ffffff !important;
+  color: #00AC76 !important;
+  border: 1px solid #00AC76 !important;
+  border-radius: 12px !important;
+  font-family: var(--font-sans) !important;
+  font-size: 12px !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  letter-spacing: normal !important;
+  transition: all 0.2s ease;
+}
+
+button.border-slate-200:hover, .border-slate-200:hover {
+  background-color: #E2FAF0 !important;
+  color: #00AC76 !important;
+  transform: translateY(-1px);
+}
+
+/* Table Design - Spacious, Sleek & Modern */
+table {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  width: 100%;
+}
+
+thead tr {
+  border-bottom: 1px solid #E2F0EA !important;
+  background-color: #F8FAF9 !important;
+}
+
+th {
+  font-family: var(--font-sans) !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
+  color: #6C8E82 !important;
+  padding: 14px 18px !important;
+  border-bottom: 1px solid #E2F0EA !important;
+}
+
+td {
+  padding: 14px 18px !important;
+  border-bottom: 1px solid #F0F6F3 !important;
+  font-size: 13px !important;
+  color: #2D4F43 !important;
+}
+
+tr:last-child td {
+  border-bottom: none !important;
+}
+
+/* Privacy Mode Masking - Sophisticated Overlay */
+.blur-\[6px\] {
+  filter: blur(8px) !important;
+  background-color: #E8F5F1 !important;
+  opacity: 0.35;
+  border-radius: 6px !important;
+  transition: all 0.3s ease;
+}
+.blur-\[6px\]:hover {
+  filter: none !important;
+  background-color: transparent !important;
+  opacity: 1;
+}
+
+/* Badges - Styled like Pill metrics in Managency */
+span.bg-blue-100, span.bg-emerald-100, span.bg-rose-100, span.bg-amber-100, span.bg-purple-100, span.bg-sky-100, span.bg-slate-100 {
+  background-color: #E2FAF0 !important;
+  color: #008A5E !important;
+  border: none !important;
+  border-radius: 9999px !important;
+  font-family: var(--font-sans) !important;
+  font-size: 11px !important;
+  text-transform: capitalize !important;
+  font-weight: 600 !important;
+  letter-spacing: normal !important;
+  padding: 4px 12px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+/* Error/Overdue Badges */
+span.bg-rose-100, span.bg-red-100 {
+  background-color: #FFECE8 !important;
+  color: #FF5A36 !important;
+}
+
+/* In-progress/Warning Badges */
+span.bg-amber-100, span.bg-yellow-100 {
+  background-color: #FFF5ED !important;
+  color: #FF9E4A !important;
+}

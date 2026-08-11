@@ -1,0 +1,239 @@
+{
+  "entities": {
+    "Lead": {
+      "title": "Lead",
+      "description": "A potential sales contact or lead",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "company": { "type": "string" },
+        "value": { "type": "number" },
+        "status": { "type": "string" },
+        "source": { "type": "string" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name", "email", "status"]
+    },
+    "Contact": {
+      "title": "Contact",
+      "description": "A client or business contact",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "company": { "type": "string" },
+        "role": { "type": "string" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name", "email"]
+    },
+    "Project": {
+      "title": "Project",
+      "description": "A project managed within the CRM",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "contactName": { "type": "string" },
+        "status": { "type": "string" },
+        "value": { "type": "number" },
+        "deadline": { "type": "string" },
+        "description": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name", "status"]
+    },
+    "TutorialPost": {
+      "title": "TutorialPost",
+      "description": "A logged post or tutorial resource",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "content": { "type": "string" },
+        "url": { "type": "string" },
+        "category": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["title", "status"]
+    },
+    "Invoice": {
+      "title": "Invoice",
+      "description": "An invoice billed to a client",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "invoiceNumber": { "type": "string" },
+        "contactName": { "type": "string" },
+        "amount": { "type": "number" },
+        "status": { "type": "string" },
+        "dueDate": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["invoiceNumber", "contactName", "amount", "status"]
+    },
+    "Subscription": {
+      "title": "Subscription",
+      "description": "A company expense or active software subscription",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "cost": { "type": "number" },
+        "billingCycle": { "type": "string" },
+        "nextRenewal": { "type": "string" },
+        "category": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name", "cost", "billingCycle", "status"]
+    },
+    "TodoTask": {
+      "title": "TodoTask",
+      "description": "A task on the to-do board",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "status": { "type": "string" },
+        "priority": { "type": "string" },
+        "dueDate": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["title", "status"]
+    },
+    "ActivityLog": {
+      "title": "ActivityLog",
+      "description": "An action or event logged in the active CRM log",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string" },
+        "description": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["type", "description", "timestamp"]
+    },
+    "GmailMessage": {
+      "title": "GmailMessage",
+      "description": "A synced or sent email message",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "from": { "type": "string" },
+        "fromName": { "type": "string" },
+        "to": { "type": "string" },
+        "subject": { "type": "string" },
+        "body": { "type": "string" },
+        "date": { "type": "string" },
+        "isRead": { "type": "boolean" },
+        "isDraft": { "type": "boolean" }
+      },
+      "required": ["from", "subject"]
+    },
+    "MeetEvent": {
+      "title": "MeetEvent",
+      "description": "A scheduled meeting event",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "contactName": { "type": "string" },
+        "date": { "type": "string" },
+        "time": { "type": "string" },
+        "meetLink": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["title", "contactName"]
+    },
+    "QuickNote": {
+      "title": "QuickNote",
+      "description": "A quick scratchpad note",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "category": { "type": "string" },
+        "isPinned": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["title", "category"]
+    },
+    "FinancialTransaction": {
+      "title": "FinancialTransaction",
+      "description": "A financial bookkeeping ledger transaction",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string" },
+        "category": { "type": "string" },
+        "amount": { "type": "number" },
+        "date": { "type": "string" },
+        "description": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["type", "category", "amount", "date"]
+    }
+  },
+  "firestore": {
+    "/leads/{leadId}": {
+      "schema": "Lead",
+      "description": "Collection of business leads"
+    },
+    "/contacts/{contactId}": {
+      "schema": "Contact",
+      "description": "Collection of client contacts"
+    },
+    "/projects/{projectId}": {
+      "schema": "Project",
+      "description": "Collection of projects"
+    },
+    "/tutorials/{tutorialId}": {
+      "schema": "TutorialPost",
+      "description": "Collection of tutorials"
+    },
+    "/invoices/{invoiceId}": {
+      "schema": "Invoice",
+      "description": "Collection of invoices"
+    },
+    "/subscriptions/{subscriptionId}": {
+      "schema": "Subscription",
+      "description": "Collection of company subscriptions"
+    },
+    "/todoTasks/{todoTaskId}": {
+      "schema": "TodoTask",
+      "description": "Collection of tasks on the Kanban board"
+    },
+    "/activityLogs/{logId}": {
+      "schema": "ActivityLog",
+      "description": "Collection of CRM actions"
+    },
+    "/gmailMessages/{msgId}": {
+      "schema": "GmailMessage",
+      "description": "Collection of Gmail messages"
+    },
+    "/meetEvents/{eventId}": {
+      "schema": "MeetEvent",
+      "description": "Collection of Meet events"
+    },
+    "/quickNotes/{noteId}": {
+      "schema": "QuickNote",
+      "description": "Collection of Quick notes"
+    },
+    "/financialTransactions/{transactionId}": {
+      "schema": "FinancialTransaction",
+      "description": "Collection of financial bookkeeping ledger transactions"
+    }
+  }
+}
